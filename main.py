@@ -2,6 +2,7 @@ import networking
 import download
 import time
 import sys
+import os
 
 #download settings
 downloadPage = 'download-url'
@@ -57,6 +58,10 @@ while keep:
         sys.exit()
     except:
         print('\nError')
-
+        
+#check if ouput dir exist
+try: os.mkdir(outputDir)
+except: pass
+        
 #download the file
 networking.downloadFile(downloadHref, outputDir + fileInformation['filename'], session)
